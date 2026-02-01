@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>she Said Yes 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("./bg1.jpg");
+background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: clamp(30px, 7vw, 48px);
+    }
+
+    p {
+      font-size: clamp(18px, 4vw, 22px);
+    }
+
+    #hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      animation: floatUp 5s linear forwards;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1 style="color: #fcfbfb;">💖Now you’re officially my Valentine💖</h1>
+    <h2>🥰🥰🥰</h2>
+  </div>
+
+  <div id="hearts"></div>
+
+  <script src="heart.js"></script>
+  <audio id="bgmusic" loop>
+  <source src="song.mp3"> type="audio/mpeg">
+  </audio>
+  <script>
+  const music = document.getElementById("bgmusic");
+
+  function startMusic() {
+    music.volume = 0.7;
+    music.play().catch(() => {});
+    document.removeEventListener("pointerdown", startMusic);
+  }
+
+  document.addEventListener("pointerdown", startMusic);
+</script>
+</audio>
+</body>
+</html>

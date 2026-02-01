@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="box">
+    <h1>kanika, will you be my Valentine? 💖</h1>
+
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+
+    let tries = 0;
+    const maxTries = 8;
+
+    function moveButton() {
+      if (tries >= maxTries) return;
+      tries++;
+
+      const padding = 20;
+      const maxX = window.innerWidth - yesBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - yesBtn.offsetHeight - padding;
+
+      yesBtn.style.left = Math.random() * maxX + "px";
+      yesBtn.style.top = Math.random() * maxY + "px";
+    }
+
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    if (isTouch) {
+      yesBtn.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        setTimeout(moveButton, 120);
+      });
+    } else {
+      yesBtn.addEventListener("mouseover", moveButton);
+    }
+
+    yesBtn.addEventListener("click", () => {
+      if (tries >= maxTries) {
+        window.location.href = "yes.html";
+      }
+    });
+
+    noBtn.addEventListener("click", () => {
+      alert(" chongtho pe maar pdegi 👋🏻 ");
+    });
+  </script>
+</body>
+</html>
